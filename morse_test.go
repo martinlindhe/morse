@@ -14,3 +14,11 @@ func TestLooksLikeMorse(t *testing.T) {
 		t.Error("fail 3")
 	}
 }
+
+func TestDecodeBrokenITU(t *testing.T) {
+
+	_, err := DecodeITU("-- ?.. ...")
+	if err == nil {
+		t.Error("expected error")
+	}
+}
