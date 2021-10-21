@@ -3,7 +3,6 @@ package morse
 import "testing"
 
 func TestLooksLikeMorse(t *testing.T) {
-
 	if !LooksLikeMorse("- .... . .-..") {
 		t.Error("fail 1")
 	}
@@ -16,7 +15,6 @@ func TestLooksLikeMorse(t *testing.T) {
 }
 
 func TestDecodeBrokenITU(t *testing.T) {
-
 	_, err := DecodeITU("-- ?.. ...")
 	if err == nil {
 		t.Error("expected error")

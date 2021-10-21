@@ -6,10 +6,8 @@ import (
 )
 
 // Decode decodes morse code in `s` using `alphabet` mapping
-func Decode(s string, alphabet map[string]string, letterSeparator string, wordSeparator string) (string, error) {
-
+func Decode(s string, alphabet map[string]string, letterSeparator, wordSeparator string) (string, error) {
 	res := ""
-
 	for _, part := range strings.Split(s, letterSeparator) {
 		found := false
 		for key, val := range alphabet {
@@ -23,7 +21,7 @@ func Decode(s string, alphabet map[string]string, letterSeparator string, wordSe
 			res += " "
 			found = true
 		}
-		if found == false {
+		if !found {
 			return res, fmt.Errorf("unknown character " + part)
 		}
 	}
@@ -31,10 +29,8 @@ func Decode(s string, alphabet map[string]string, letterSeparator string, wordSe
 }
 
 // Encode encodes clear text in `s` using `alphabet` mapping
-func Encode(s string, alphabet map[string]string, letterSeparator string, wordSeparator string) string {
-
+func Encode(s string, alphabet map[string]string, letterSeparator, wordSeparator string) string {
 	res := ""
-
 	for _, part := range s {
 		p := string(part)
 		if p == " " {
@@ -60,7 +56,6 @@ func EncodeITU(s string) string {
 
 // LooksLikeMorse returns true if string seems to be a morse encoded string
 func LooksLikeMorse(s string) bool {
-
 	if len(s) < 1 {
 		return false
 	}
